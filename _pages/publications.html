@@ -40,5 +40,110 @@ author_profile: true
   </div>
 {% endif %}
 
+<script>
+(function () {
+  // Collect publications with their year (from /publication/YYYY-MM-slug permalinks)
+  var items = [];
+  document.querySelectorAll('.pub-group .list__item').forEach(function (li) {
+    var a = li.querySelector('.archive__item-title a');
+    var m = a && (a.getAttribute('href') || '').match(/\/publication\/(\d{4})-/);
+    if (m) items.push({ el: li, year: +m[1] });
+  });
+  if (items.length < 2) return;
+
+  // Bucket by year, newest first
+  var years = [];
+  items.forEach(function (it) {
+    var b = years.find(function (y) { return y.year === it.year; });
+    if (b) b.els.push(it.el); else years.push({ year: it.year, els: [it.el] });
+  });
+  years.sort(function (a, b) { return b.year - a.year; });
+
+  // Build the rail: ticks positioned by each year's first item on the page
+  var nav = document.createElement('nav');
+  nav.className = 'pub-timeline';
+  nav.setAttribute('aria-label', 'Publication years');
+  var html = '<div class="pub-timeline__rail" title="Drag to scroll"><div class="pub-timeline__thumb"></div></div>';
+  years.forEach(function (b) {
+    html += '<button type="button" class="pub-timeline__tick" data-year="' + b.year + '" title="Jump to ' + b.year + '">' + b.year + '</button>';
+  });
+  nav.innerHTML = html;
+  document.body.appendChild(nav);
+
+  var rail = nav.querySelector('.pub-timeline__rail');
+  var thumb = nav.querySelector('.pub-timeline__thumb');
+  var ticks = [].slice.call(nav.querySelectorAll('.pub-timeline__tick'));
+
+  function maxScroll() {
+    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  }
+
+  function layout() {
+    var max = maxScroll();
+    years.forEach(function (b, i) {
+      // Median document position of the year's items: robust to entries that
+      // sit outside the chronological flow (e.g. book/draft groups at the top)
+      var tops = b.els.map(function (el) {
+        return el.getBoundingClientRect().top + window.scrollY - 110;
+      }).sort(function (a, c) { return a - c; });
+      var anchor = tops[Math.floor((tops.length - 1) / 2)];
+      b.pos = max > 0 ? Math.min(1, Math.max(0, anchor / max)) : 0;
+      ticks[i].style.top = (b.pos * 100) + '%';
+    });
+    update();
+  }
+
+  function update() {
+    var max = maxScroll();
+    var frac = max > 0 ? window.scrollY / max : 0;
+    thumb.style.top = (frac * 100) + '%';
+    var active = 0;
+    for (var i = 0; i < years.length; i++) {
+      if (years[i].pos <= frac + 0.005) active = i;
+    }
+    ticks.forEach(function (t, i) { t.classList.toggle('is-active', i === active); });
+  }
+
+  var raf = null;
+  window.addEventListener('scroll', function () {
+    if (!raf) raf = requestAnimationFrame(function () { raf = null; update(); });
+  }, { passive: true });
+  window.addEventListener('resize', layout);
+
+  // Click a year -> jump to its first publication
+  ticks.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      window.scrollTo({ top: years[i].pos * maxScroll(), behavior: 'smooth' });
+    });
+  });
+
+  // Drag the rail to scrub the page (mouse + touch)
+  var dragging = false;
+  function scrub(y) {
+    var r = rail.getBoundingClientRect();
+    var frac = Math.min(1, Math.max(0, (y - r.top) / r.height));
+    window.scrollTo(0, frac * maxScroll());
+  }
+  rail.addEventListener('mousedown', function (e) {
+    dragging = true;
+    scrub(e.clientY);
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (dragging) scrub(e.clientY);
+  });
+  window.addEventListener('mouseup', function () { dragging = false; });
+  rail.addEventListener('touchstart', function (e) {
+    scrub(e.touches[0].clientY);
+  }, { passive: true });
+  rail.addEventListener('touchmove', function (e) {
+    scrub(e.touches[0].clientY);
+  }, { passive: true });
+
+  if (document.readyState === 'complete') layout();
+  else window.addEventListener('load', layout);
+})();
+</script>
+
 
 
