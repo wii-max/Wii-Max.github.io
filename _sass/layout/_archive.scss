@@ -245,7 +245,7 @@
 }
 
 /* ==========================================================================
-   Numbered publication groups (per-group, newest first)
+   Numbered publication groups: hanging rounded badge + hover fill (L->R)
    ========================================================================== */
 
 .pub-group {
@@ -253,10 +253,66 @@
 
   .list__item {
     counter-increment: pub-counter;
+    position: relative;
+    padding-left: 44px;           // gutter for the hanging number badge
+    border-radius: 4px;
+    overflow: hidden;             // clip the hover fill to the item box
+
+    // left-to-right light-gray fill on hover
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.05);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
   }
 
-  .archive__item-title::before {
-    content: counter(pub-counter) ". ";
-    font-weight: bold;
+  .archive__item {
+    position: relative;
+    z-index: 1;                   // keep content above the fill layer
+  }
+
+  // number badge: rounded square hanging in the left gutter
+  .archive__item-title {
+    position: relative;
+
+    &::before {
+      content: counter(pub-counter);
+      position: absolute;
+      left: -37px;
+      top: 0.15em;
+      width: 27px;
+      height: 27px;
+      line-height: 27px;
+      text-align: center;
+      border-radius: 6px;
+      background: #e6e6e6;
+      color: #404040;
+      font-weight: bold;
+      font-size: 0.8em;
+      pointer-events: none;
+    }
+  }
+
+  // narrow screens: no room to hang the badge, show it inline
+  @include breakpoint(max-width $small) {
+    .list__item {
+      padding-left: 0;
+    }
+
+    .archive__item-title::before {
+      position: static;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.4em;
+    }
   }
 }
