@@ -243,3 +243,20 @@
     }
   }
 }
+
+/* ==========================================================================
+   Numbered publication groups (per-group, newest first)
+   ========================================================================== */
+
+.pub-group {
+  counter-reset: pub-counter;
+
+  .list__item {
+    counter-increment: pub-counter;
+  }
+
+  .archive__item-title::before {
+    content: counter(pub-counter) ". ";
+    font-weight: bold;
+  }
+}
