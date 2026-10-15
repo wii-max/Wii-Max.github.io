@@ -399,3 +399,30 @@
   font-size: $type-size-6;
   text-transform: uppercase;
 }
+
+/* ==========================================================================
+   Content polish: contact card, section headings, justified body text
+   ========================================================================== */
+
+.contact-card {
+  padding: 1em 1.25em;
+  border-left: 4px solid $primary-color;
+  background: rgba($primary-color, 0.07);
+  border-radius: 0 6px 6px 0;
+  line-height: 1.9;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.page__content {
+  h1 {
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid rgba($primary-color, 0.45);
+  }
+
+  p {
+    text-align: justify;
+  }
+}
