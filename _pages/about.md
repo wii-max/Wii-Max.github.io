@@ -59,5 +59,5 @@ Professional Activities
 * <i></i>, 2013-2014
 -->
 
-Last updated: 2024-03-06
+Last updated: 2026-10-15
 {: .notice--info}
