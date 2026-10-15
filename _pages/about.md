@@ -8,14 +8,16 @@ redirect_from:
   - /about.html
 ---
 
-<div class="contact-card" markdown="1">
-  <p>
+<div class="contact-plain">
+  <p class="affil">
     <a href="http://eie.bjtu.edu.cn/" target="_blank">Depart. of EIE</a> ·
-    <a href="https://www.bjtu.edu.cn/" target="_blank">Beijing Jiaotong University</a><br>
-    Address: Jiaotong University East Road, Beijing Jiaotong University, Beijing, 100044 China<br>
-    Tel: +86 010-5168-8744<br>
-    Email: <a href="mailto:weiquan@bjtu.edu.cn">weiquan@bjtu.edu.cn</a>
+    <a href="https://www.bjtu.edu.cn/" target="_blank">Beijing Jiaotong University</a>
   </p>
+  <p class="muted">
+    Address: Jiaotong University East Road, Beijing Jiaotong University, Beijing, 100044 China<br>
+    Tel: +86 010-5168-8744 &nbsp;·&nbsp; Email: <a href="mailto:weiquan@bjtu.edu.cn">weiquan@bjtu.edu.cn</a>
+  </p>
+  <hr>
 </div>
 
 Brief Biography
