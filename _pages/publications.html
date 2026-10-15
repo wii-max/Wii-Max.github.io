@@ -42,7 +42,7 @@ author_profile: true
 
 <script>
 (function () {
-  // Collect publications with their year (from /publication/YYYY-MM-slug permalinks)
+  /* Collect publications with their year (from /publication/YYYY-MM-slug permalinks) */
   var items = [];
   document.querySelectorAll('.pub-group .list__item').forEach(function (li) {
     var a = li.querySelector('.archive__item-title a');
@@ -51,7 +51,7 @@ author_profile: true
   });
   if (items.length < 2) return;
 
-  // Bucket by year, newest first
+  /* Bucket by year, newest first */
   var years = [];
   items.forEach(function (it) {
     var b = years.find(function (y) { return y.year === it.year; });
@@ -59,7 +59,7 @@ author_profile: true
   });
   years.sort(function (a, b) { return b.year - a.year; });
 
-  // Build the rail: ticks positioned by each year's first item on the page
+  /* Build the rail: ticks positioned by each year's first item on the page */
   var nav = document.createElement('nav');
   nav.className = 'pub-timeline';
   nav.setAttribute('aria-label', 'Publication years');
@@ -81,8 +81,8 @@ author_profile: true
   function layout() {
     var max = maxScroll();
     years.forEach(function (b, i) {
-      // Median document position of the year's items: robust to entries that
-      // sit outside the chronological flow (e.g. book/draft groups at the top)
+      /* Median document position of the year's items: robust to entries that */
+      /* sit outside the chronological flow (e.g. book/draft groups at the top) */
       var tops = b.els.map(function (el) {
         return el.getBoundingClientRect().top + window.scrollY - 110;
       }).sort(function (a, c) { return a - c; });
@@ -110,14 +110,14 @@ author_profile: true
   }, { passive: true });
   window.addEventListener('resize', layout);
 
-  // Click a year -> jump to its first publication
+  /* Click a year -> jump to its first publication */
   ticks.forEach(function (t, i) {
     t.addEventListener('click', function () {
       window.scrollTo({ top: years[i].pos * maxScroll(), behavior: 'smooth' });
     });
   });
 
-  // Drag the rail to scrub the page (mouse + touch)
+  /* Drag the rail to scrub the page (mouse + touch) */
   var dragging = false;
   function scrub(y) {
     var r = rail.getBoundingClientRect();

@@ -420,12 +420,12 @@
 
   hr {
     border: 0;
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid var(--global-border-color, #e8e8e8);
     margin: 1.1em 0 0;
   }
 }
 
-/* Dotted page texture with white content card */
+/* Dotted page texture with content card; colors follow the theme toggle */
 html, body {
   background-color: #f4f5f7;
   background-image: radial-gradient(#d8dade 1px, transparent 1px);
@@ -433,19 +433,36 @@ html, body {
   background-attachment: fixed;
 }
 
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background-color: #1e2126;
+  background-image: radial-gradient(#34383f 1px, transparent 1px);
+}
+
 .sidebar {
   background: transparent;
 }
 
 .sidebar__card {
-  background: #ffffff;
+  background: var(--global-bg-color, #ffffff);
   border-radius: 10px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
   padding: 1.2em 1em 1.4em;
 }
 
+html[data-theme="dark"] {
+  .sidebar__card,
+  #main {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .contact-plain .muted {
+    color: #9aa3ad;
+  }
+}
+
 #main {
-  background: #ffffff;
+  background: var(--global-bg-color, #ffffff);
   border-radius: 10px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
   padding: 1.6em 2em;
