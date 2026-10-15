@@ -434,7 +434,14 @@ html, body {
 }
 
 .sidebar {
+  background: transparent;
+}
+
+.sidebar__card {
   background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+  padding: 1.2em 1em 1.4em;
 }
 
 #main {
