@@ -16,10 +16,6 @@ redirect_from:
   Email: <a href="mailto:weiquan@bjtu.edu.cn">weiquan@bjtu.edu.cn</a>
 </p>
 
-News
-======
-* Jan. 2024 - Our paper, "*DOFMS: DRL-based Out-of-order Friendly Multipath Scheduling in Mobile Heterogeneous Networks*" was accepted by *IEEE TMC*. <span style="color:red">Congratulations to Ziheng!</span>
-
 Brief Biography
 ======
 **Dr. Wei Quan** (Member, IEEE) received his Ph.D degree in Communication and Information System from Beijing University of Posts and Telecommunications (BUPT), Beijing, China in 2014. He currently is a Full Professor at School of Electronic and Information Engineering, Beijing Jiaotong University (BJTU). Commencing from Sep. 2017 to Sep. 2018, he is a Visiting Scientist at BBCR Lab, Department of ECE, University of Waterloo, Canada, supervised by ***Prof. Xuemin (Sherman) Shen***.
@@ -32,10 +28,13 @@ He is a winner of *Excellent Young Scholar of NSFC*, a winner of *2022 IEEE ComS
 
 Honors & Awards
 ======
+* *First Prize* (Provincial-Ministerial Level), Science and Technology Progress Award of the Ministry of Education of China, for "Key Technologies and Applications of High-Efficiency Collaborative Management and Control for Rail Transit under Networked Operation", 2025, **Rank 4/15**.
+* *Innovation Star of the Beijing Nova Program*, Beijing Municipal Science and Technology Commission, 2023.
 * *First Prize*, Chinese Association of Automation Award, 2023, **Rank 4/15**.
-* *First Prize*, Science and Technology Progress Award of Henan Province, 2023, **Rank 4/15**.
-* *First Prize*, China Industry-University-Research Cooperation Achievement Award, 2022, **Rank 2/10**.
+* *First Prize*, Science and Technology Progress Award of Henan Province, for "Independent and Controllable Intelligent Key Technologies and Applications for Industrial Internet", 2023, **Rank 3/15**.
+* *IEEE ComSoc Asia-Pacific Outstanding Young Researcher Award*, IEEE Communications Society, 2022 (sole recipient).
 * *First Prize*, China Institute of Communications Award, 2022, **Rank 2/15**.
+* *First Prize*, China Industry-University-Research Cooperation Achievement Award, 2022, **Rank 2/10**.
 * *Best Paper Award*, for paper "Space-air-ground integrated networks: review and prospect", Chinese Journal on Internet of Things, 2020 (only 3 winners in total each year)
 * *Best Paper Award*, for paper "Optimization Design of P4 Software Switch based on DPDK", The 3rd Advanced Computing and Endogenous Security Conference, Nanjing, China, 2018
 * *Best Paper Award*, for paper "A SINET-based communication architecture for Smart Grid", International Telecommunication Networks and Applications Conference (ITNAC), Sydney, Australia, 2015
